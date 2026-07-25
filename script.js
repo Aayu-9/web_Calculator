@@ -27,52 +27,46 @@ const factorial = function (num) {
     return answer;
 };
 
+// function which takes the input and calls for functions
 function operator(num1, operator, num2) {
     switch (operator) {
         case "+":
             return add(num1, num2);
-            break;
         case "-":
             return subctract(num1, num2);
-            break;
         case "*":
             return multiply(num1, num2);
-            break;
         case "/":
             return divide(num1, num2);
-            break;
         case "!":
             return factorial(num1);
-            break;
         case "^":
             return power(num1, num2);
-            break;
     }
 }
 
+// calculator's display (uses unredable input)
 const display = document.querySelector("#display");
 
-
+// arrays and variable to store input and keep track of numbers(help in calculation)
 const value = []
 const opeArr = []
+let string = "";
 
+// functions which takes the button input and decide which operation to perform
 function listen(e) {
-    button = e.target.id;
+    let button = e.target.id;
     display.value += button;
-    let string = "";
 
-
-    if (opeArr.length==1 || button == "=")
-    {
-        if (button != "=")
-        {
-            value.unshift(button);
-        }
+    if (opeArr.length > 1 || button == "=") {
+        value.unshift(+string);
         let answer = operator(value.pop(), `${opeArr.pop()}`, value.pop());
-        display.value = answer;
+        display.value = +answer;
         value.length = 0;
-        value.unshift(answer);
+        value.unshift(+answer);
         opeArr.length = 0;
+        string = "";
+        return;
     }
 
     switch (button) {
@@ -84,38 +78,30 @@ function listen(e) {
             break;
         case "+":
             opeArr.unshift(button);
-            // value.unshift(string);
-            string = "";
             break;
         case "-":
             opeArr.unshift(button);
-            // value.unshift(string);
-            string = "";
             break;
         case "*":
             opeArr.unshift(button);
-            // value.unshift(string);
-            string = "";
             break;
         case "/":
             opeArr.unshift(button);
-            // value.unshift(string);
-            string = "";
             break;
         case "!":
             opeArr.unshift(button);
-            // value.unshift(string);
-            string = "";
             break;
         case "^":
             opeArr.unshift(button);
-            // value.unshift(string);
-            string = "";
             break;
         default:
             string += `${button}`;
-            value.unshift(button);
             console.log(string);
+            return;
+    }
+    if (string != 0) {
+        value.unshift(+string);
+        string = "";
     }
 
 }
