@@ -61,9 +61,11 @@ function listen(e) {
         display.value += button;
     }
 
+    // call operator and calculate the answer, limit decimal places too.
     if ((opeArr.length == 1 && (button == "+" || button == "-" || button == "*" || button == "/" || button == "!" || button == "^")) || button == "=") {
         value.unshift(+string);
         let answer = operator(value.pop(), `${opeArr.pop()}`, value.pop());
+        answer = Math.trunc(answer * 100000) / 100000;
         display.value = +answer;
         value.length = 0;
         value.unshift(+answer);
@@ -76,6 +78,7 @@ function listen(e) {
         return;
     }
 
+    // switch to do different button's operations and add them arrays and variable.
     switch (button) {
         case "clear":
             display.value = "";
@@ -116,6 +119,7 @@ function listen(e) {
 
 }
 
+// detect click
 const buttons = document.querySelectorAll("button");
 buttons.forEach((button) => {
     button.addEventListener("click", listen);
