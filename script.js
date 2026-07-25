@@ -56,7 +56,10 @@ let string = "";
 // functions which takes the button input and decide which operation to perform
 function listen(e) {
     let button = e.target.id;
-    display.value += button;
+    if (button!=="history")
+    {
+        display.value += button;
+    }
 
     if ((opeArr.length == 1 && (button == "+" || button == "-" || button == "*" || button == "/" || button == "!" || button == "^")) || button == "=") {
         value.unshift(+string);
@@ -79,6 +82,9 @@ function listen(e) {
             value.length = 0;
             opeArr.length = 0;
             string = "";
+            break;
+        case "history":
+            alert("You should never see someone's history, not even your own");
             break;
         case "+":
             opeArr.unshift(button);
