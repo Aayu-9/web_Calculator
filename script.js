@@ -58,7 +58,7 @@ function listen(e) {
     let button = e.target.id;
     display.value += button;
 
-    if (opeArr.length > 1 || button == "=") {
+    if ((opeArr.length == 1 && (button == "+" || button == "-" || button == "*" || button == "/" || button == "!" || button == "^")) || button == "=") {
         value.unshift(+string);
         let answer = operator(value.pop(), `${opeArr.pop()}`, value.pop());
         display.value = +answer;
@@ -66,6 +66,9 @@ function listen(e) {
         value.unshift(+answer);
         opeArr.length = 0;
         string = "";
+        if (button != "=") {
+            opeArr.unshift(button);
+        }
         return;
     }
 
