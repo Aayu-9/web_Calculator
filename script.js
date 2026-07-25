@@ -67,6 +67,7 @@ function listen(e) {
         opeArr.length = 0;
         string = "";
         if (button != "=") {
+            display.value += button;
             opeArr.unshift(button);
         }
         return;
