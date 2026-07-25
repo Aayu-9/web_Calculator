@@ -33,22 +33,22 @@ function operator (num1, operator, num2)
 {
     switch (operator) {
         case "+":
-            add(num1, num2);
+            return add(num1, num2);
             break;
         case "-":
-            subctract(num1, num2);
+            return subctract(num1, num2);
             break;
         case "*":
-            multiply(num1, mum2);
+            return multiply(num1, mum2);
             break;
         case "/":
-            multiply(num1, num2);
+            return multiply(num1, num2);
             break;
         case "!":
-            factorial(num);
+            return factorial(num);
             break;
         case "^":
-            power(num1, num2);
+            return power(num1, num2);
             break;
     }
 }
