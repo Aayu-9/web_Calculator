@@ -1,3 +1,5 @@
+
+// functions for calculation
 function add (num1, num2) {
   return (num1+num2);
 };
@@ -52,3 +54,16 @@ function operator (num1, operator, num2)
             break;
     }
 }
+
+const display = document.querySelector("#display");
+let array = [];
+
+function listen(e)
+{
+    display.value += e.target.id;
+}
+
+const buttons = document.querySelectorAll("button");
+buttons.forEach((button) => {
+    button.addEventListener("click", listen);
+})
