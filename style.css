@@ -19,6 +19,7 @@ body {
 .container {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 40dvw;
     height: 80dvh;
     background-color: paleturquoise;
@@ -29,4 +30,16 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    width: 20dvw;
+    height: 60dvh;
+    border: 2px solid black;
+}
+
+.display {
+    width: 100%;
+    display: flex;
+}
+input {
+    width: 100%;
+    height: 5dvh;
 }
