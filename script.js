@@ -60,7 +60,7 @@ let string = "";
 // functions which takes the button input and decide which operation to perform
 function listen(e) {
     let button = e.target.id;
-    if (button != "." && button!="delete") {
+    if (button != "." && button != "backspace") {
         display.value += button;
     }
 
@@ -94,22 +94,19 @@ function listen(e) {
             opeArr.length = 0;
             string = "";
             break;
-        case "delete":
+        case "backspace":
             let remove = display.value.slice(-1);
-            if (Number.isFinite(+remove))
-            {
-                display.value = display.value.slice(0, -1);
-                string = string.slice(0, -1);
-                return;
-            }    
-            else if (remove == ".")
-            {
+            if (Number.isFinite(+remove)) {
                 display.value = display.value.slice(0, -1);
                 string = string.slice(0, -1);
                 return;
             }
-            else
-            {
+            else if (remove == ".") {
+                display.value = display.value.slice(0, -1);
+                string = string.slice(0, -1);
+                return;
+            }
+            else {
                 display.value = display.value.slice(0, -1);
                 string = string.slice(0, -1);
                 opeArr.pop();
@@ -143,7 +140,6 @@ function listen(e) {
             return;
         default:
             string += `${button}`;
-            console.log(string);
             return;
     }
     if (string != 0) {
@@ -158,3 +154,4 @@ const buttons = document.querySelectorAll("button");
 buttons.forEach((button) => {
     button.addEventListener("click", listen);
 })
+
