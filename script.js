@@ -60,7 +60,7 @@ let string = "";
 // functions which takes the button input and decide which operation to perform
 function listen(e) {
     let button = e.target.id;
-    if (button != ".") {
+    if (button != "." && button!="delete") {
         display.value += button;
     }
 
@@ -94,9 +94,28 @@ function listen(e) {
             opeArr.length = 0;
             string = "";
             break;
-        case "history":
-            alert("You should never see someone's history, not even your own");
-            break;
+        case "delete":
+            let remove = display.value.slice(-1);
+            if (Number.isFinite(+remove))
+            {
+                display.value = display.value.slice(0, -1);
+                string = string.slice(0, -1);
+                return;
+            }    
+            else if (remove == ".")
+            {
+                display.value = display.value.slice(0, -1);
+                string = string.slice(0, -1);
+                return;
+            }
+            else
+            {
+                display.value = display.value.slice(0, -1);
+                string = string.slice(0, -1);
+                opeArr.pop();
+                return;
+            }
+
         case "+":
             opeArr.unshift(button);
             break;
@@ -116,10 +135,9 @@ function listen(e) {
             opeArr.unshift(button);
             break;
         case ".":
-            if (!display.value.includes(".")) {
+            if (!string.includes(".")) {
                 display.value += button;
                 string += `${button}`;
-                console.log(string);
                 return;
             }
             return;
