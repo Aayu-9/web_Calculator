@@ -5,6 +5,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #0f172a;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .heading {
@@ -12,34 +14,97 @@ body {
     justify-content: center;
     font-size: 50px;
     font-weight: bold;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    text-shadow: 2px 2px 4px;
+    text-shadow: 2px 2px 4px gray;
+    padding: 8px;
+    color: white;
 }
 
 .container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    width: 40dvw;
+    width: 80dvw;
     height: 80dvh;
-    background-color: paleturquoise;
+    background-color: #0f172a;
 }
 
 .calculator {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     width: 20dvw;
     height: 60dvh;
-    border: 2px solid black;
+    background-color: #1e293b;
+    border: 2px solid #f97316;
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.5),
+        inset 0 0 10px rgba(249, 115, 22, 0.3),
+        0 25px 50px -12px rgba(0, 0, 0, 0.7);
 }
 
 .display {
-    width: 100%;
+    width: 95%;
     display: flex;
+    margin: 16px;
 }
+
 input {
     width: 100%;
-    height: 5dvh;
+    height: 7dvh;
+    background-color: #0f172a;
+    color: #f8fafc;
+    font-size: larger;
+    text-align: end;
+}
+
+button {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 4.5dvw;
+    height: 9dvh;
+    font-size: large;
+}
+
+.special,
+.digits,
+.operators {
+    display: flex;
+    flex: 0 1 auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    margin: 8px;
+}
+
+.middle {
+    background-color: #334155;
+    color: #ffffff;
+}
+
+.bottom {
+    background-color: #f97316;
+    color: #ffffff;
+}
+
+.up {
+    background-color: #94a3b8;
+    color: #0f172a;
+}
+
+.text {
+    width: 50dvw;
+    font-size: large;
+    color: white;
+    border: 2px solid white;
+    padding: 8px;
 }

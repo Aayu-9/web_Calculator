@@ -69,7 +69,7 @@ function listen(e) {
         if (string != 0) {
             value.unshift(+string);
         }
-        if (opeArr.length >= 1 && value.length == 1) {
+        if (opeArr.length >= 1 && value.length == 1 && !opeArr.includes("!")) {
             return;
         }
         let answer = operator(value.pop(), `${opeArr.pop()}`, value.pop());
