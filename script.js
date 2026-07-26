@@ -66,7 +66,7 @@ function listen(e) {
 
     // call operator and calculate the answer, limit decimal places too.
     if ((opeArr.length >= 1 && (button == "+" || button == "-" || button == "*" || button == "/" || button == "!" || button == "^")) || button == "=") {
-        if (string != 0) {
+        if (string.length != 0) {
             value.unshift(+string);
         }
         if (opeArr.length >= 1 && value.length == 1 && !opeArr.includes("!")) {
