@@ -12,6 +12,10 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
+    if (num2 == 0) {
+        alert("Error! can't divide by 0");
+        return num1 / 1;
+    }
     return (num1 / num2);
 }
 
@@ -56,14 +60,18 @@ let string = "";
 // functions which takes the button input and decide which operation to perform
 function listen(e) {
     let button = e.target.id;
-    if (button!=="history")
-    {
+    if (button != ".") {
         display.value += button;
     }
 
     // call operator and calculate the answer, limit decimal places too.
-    if ((opeArr.length == 1 && (button == "+" || button == "-" || button == "*" || button == "/" || button == "!" || button == "^")) || button == "=") {
-        value.unshift(+string);
+    if ((opeArr.length >= 1 && (button == "+" || button == "-" || button == "*" || button == "/" || button == "!" || button == "^")) || button == "=") {
+        if (string != 0) {
+            value.unshift(+string);
+        }
+        if (opeArr.length >= 1 && value.length == 1) {
+            return;
+        }
         let answer = operator(value.pop(), `${opeArr.pop()}`, value.pop());
         answer = Math.trunc(answer * 100000) / 100000;
         display.value = +answer;
@@ -107,6 +115,14 @@ function listen(e) {
         case "^":
             opeArr.unshift(button);
             break;
+        case ".":
+            if (!display.value.includes(".")) {
+                display.value += button;
+                string += `${button}`;
+                console.log(string);
+                return;
+            }
+            return;
         default:
             string += `${button}`;
             console.log(string);
